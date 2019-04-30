@@ -16,16 +16,18 @@ const initialStateSearch = {
 /*Reducers basically checks for which action type was sent to it,
 	checks the update
 */
+
 export const searchRobots = (state = initialStateSearch, action={}) =>{
 	switch(action.type){
 		case CHANGE_SEARCH_FIELD:
-			// console.log('d')
 			return Object.assign({}, state, {searchField: action.payload});
 		default:
 			return state;
 	}
 }
-/*const initialStateRobots = {
+/*
+We can further separat concerns here
+const initialStateRobots = {
 	isPending: false,
 	robots: [],
 	error: ''

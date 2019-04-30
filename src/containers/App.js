@@ -13,7 +13,9 @@ const mapStateToProps = (state) =>{//Tells what state the component needs to lis
 	return {
 		// searchFieldx: state.searchField //Because we only have one reducer we are working with now
 		//Returns the properties set in the reducers that this component is concerned with
-		searchFieldx: state.searchRobots.searchField, 
+		searchFieldx: state.searchRobots.searchField, // Here, searchFieldx points to the searchField state resulting from the 
+													  // searchRobots fxn in the reducers
+													  // This is also because we used combineReducers in the index.js
 		isPending: state.requestRobots.isPending,
 		robots: state.requestRobots.robots,
 		error: state.requestRobots.error
@@ -24,8 +26,9 @@ const mapDispatchToProps = (dispatch) =>{//Tells what actions that this componen
 	return{
 		onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
 		// On search, trigger the setSearch fxn which returns the type of action and the payload
-		// then dispatch it to the reducer which makes the relevant change and returns the
-		// the parts of the updated part of the state
+		// then dispatch it to the reducer which scans through all the functions in it to find one
+		// that matches the action.type
+		//makes the relevant change and returns the updated state
 		// Now Provider uses mapStateToProps to determine the parts of the state it should send back 
 		// to this component as props
 		onRequestRobots: () => requestRobots(dispatch)//This is an async fxn hence the syntax
@@ -68,7 +71,7 @@ class App extends Component{
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 // connect it a higher order fxn, meaning it returns a fuction
-// This in turn runs with (App) as a parameter
+// This returned fxn in turn runs with (App) as a parameter
 
 /*
 Connect sends the states and actions that this component is interested in to the Provider in the parent
