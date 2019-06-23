@@ -1,4 +1,4 @@
-This project was base on andrei's web development tutorial and i hosted it with GitHub pages here [Robofriends](https://wilpat.github.io/robofriends/).
+This project was based on andrei's web development tutorial and I hosted it with GitHub pages here [Robofriends](https://wilpat.github.io/robofriends/).
 
 ## Available Scripts
 
